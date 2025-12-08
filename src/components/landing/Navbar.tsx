@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ameenLogo from "@/assets/ameen-logo.jpg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,9 +20,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-sage flex items-center justify-center">
-              <span className="text-foreground font-bold text-sm">AC</span>
-            </div>
+            <img src={ameenLogo} alt="AmeenCheck" className="w-8 h-8" />
             <span className="font-semibold text-foreground">AmeenCheck</span>
           </a>
 
