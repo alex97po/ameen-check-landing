@@ -57,7 +57,7 @@ const Footer = () => {
             <a href="#" className="text-background/60 hover:text-background transition-colors">
               Terms
             </a>
-            <a href="mailto:hello@ameencheck.com" className="text-background/60 hover:text-background transition-colors">
+            <a href="mailto:sas.pogorelov@gmail.com" className="text-background/60 hover:text-background transition-colors">
               Contact
             </a>
           </div>
@@ -65,14 +65,14 @@ const Footer = () => {
           {/* Social */}
           <div className="flex items-center gap-4">
             <a 
-              href="#" 
+              href="https://www.linkedin.com/in/alex-pohorelov/" 
               className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <a 
-              href="mailto:hello@ameencheck.com" 
+              href="mailto:sas.pogorelov@gmail.com" 
               className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
               aria-label="Email"
             >
