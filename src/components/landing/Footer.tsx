@@ -38,8 +38,8 @@ const Footer = () => {
           {/* Logo & Copyright */}
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
-              <img src="/ameen-logo.svg" alt="AmeenPay" className="w-8 h-8" />
-              <span className="font-semibold">AmeenPay</span>
+              <img src="/ameen-logo.svg" alt="AmeenCheck" className="w-8 h-8" />
+              <span className="font-semibold">AmeenCheck</span>
             </div>
             <span className="text-background/40 text-sm">
               © 2025 All rights reserved

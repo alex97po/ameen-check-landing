@@ -19,8 +19,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <img src="/ameen-logo.svg" alt="AmeenPay" className="w-8 h-8" />
-            <span className="font-semibold text-foreground">AmeenPay</span>
+            <img src="/ameen-logo.svg" alt="AmeenCheck" className="w-8 h-8" />
+            <span className="font-semibold text-foreground">AmeenCheck</span>
           </a>
 
           {/* Desktop Navigation */}
