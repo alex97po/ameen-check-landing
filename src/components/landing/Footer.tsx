@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ameenLogo from "@/assets/ameen-logo.jpg";
 
 const Footer = () => {
   return (
@@ -38,9 +39,7 @@ const Footer = () => {
           {/* Logo & Copyright */}
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-sage flex items-center justify-center">
-                <span className="text-foreground font-bold text-sm">AC</span>
-              </div>
+              <img src={ameenLogo} alt="AmeenCheck" className="w-8 h-8" />
               <span className="font-semibold">AmeenCheck</span>
             </div>
             <span className="text-background/40 text-sm">

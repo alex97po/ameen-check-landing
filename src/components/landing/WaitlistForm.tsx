@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Sparkles } from "lucide-react";
 
 const WaitlistForm = () => {
   return (
@@ -62,41 +61,22 @@ const WaitlistForm = () => {
             We're reviewing applications on a rolling basis. The sooner you apply, the better your chances of joining as a design partner.
           </motion.p>
 
-          {/* Airtable Form Placeholder - Replace with your actual embed */}
+          {/* Airtable Form Embed */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-card rounded-2xl border border-border p-8 md:p-12"
+            className="bg-card rounded-2xl border border-border overflow-hidden"
           >
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-sage/20 flex items-center justify-center mx-auto mb-6">
-                <Sparkles className="w-8 h-8 text-sage-dark" />
-              </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                Apply to Join the Pilot
-              </h3>
-              <p className="text-muted-foreground text-sm mb-6">
-                Share your challenges—we want to solve them.
-              </p>
-              
-              {/* Replace this button with your Airtable embed iframe */}
-              <Button variant="hero" size="xl" className="w-full max-w-sm group" asChild>
-                <a 
-                  href="https://airtable.com/your-form-link" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  Open Application Form
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </a>
-              </Button>
-              
-              <p className="text-xs text-muted-foreground mt-4">
-                Takes about 3 minutes to complete
-              </p>
-            </div>
+            <iframe 
+              className="airtable-embed" 
+              src="https://airtable.com/embed/appBOK2KjEss14wHq/pags6o3n68KUp0ztY/form" 
+              width="100%" 
+              height="533" 
+              style={{ background: 'transparent', border: 'none' }}
+              title="AmeenCheck Pilot Application Form"
+            />
           </motion.div>
         </div>
       </div>
