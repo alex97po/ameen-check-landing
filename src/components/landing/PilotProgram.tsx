@@ -12,17 +12,17 @@ const benefits = [
 ];
 
 const requirements = [
-  "Handle 50+ placements monthly",
+  "Handle 30+ placements monthly or regularly manage high-volume roles",
   "Ready to embrace AI in their workflow",
   "Want a voice in how this AI employee thinks and works",
   "Can dedicate time to feedback and testing",
 ];
 
 const timeline = [
-  { phase: "Now", text: "Join the waitlist" },
-  { phase: "Q1 2026", text: "Pilot partner selection & onboarding" },
-  { phase: "Q2 2026", text: "Collaborative development & real-world testing" },
-  { phase: "Q3 2026", text: "Launch & transition to full platform" },
+  { phase: "Now", text: "Invite-only pilot with early agencies" },
+  { phase: "Q1 2026", text: "Extend pilot & refine AI screening and risk engine" },
+  { phase: "Q2 2026", text: "Public beta launch for a wider group of agencies" },
+  { phase: "Q3 2026", text: "Full platform launch with partner-grade pricing" },
 ];
 
 const PilotProgram = () => {
@@ -37,7 +37,7 @@ const PilotProgram = () => {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold text-foreground mb-4"
           >
-            Build It With Us. Shape Your Perfect AI Teammate.
+            Build It With Us.<br/>Shape Your Perfect AI Teammate.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -46,7 +46,7 @@ const PilotProgram = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-muted-foreground text-lg"
           >
-            We're not just launching software—we're creating an AI employee that works exactly how you need it to work.
+            We're not just launching software — we're training an AI teammate together with agencies like yours, so it thinks and works the way your recruiters do.
           </motion.p>
         </div>
 

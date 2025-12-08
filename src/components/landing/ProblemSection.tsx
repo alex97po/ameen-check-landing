@@ -3,28 +3,20 @@ import { Clock, Mail, FileSearch, Users, AlertCircle, Timer } from "lucide-react
 
 const painPoints = [
   {
-    icon: Clock,
-    text: "Hours spent crafting job descriptions for every role",
-  },
-  {
     icon: Mail,
-    text: "Manually posting the same job across multiple platforms",
+    text: "Drowning in applications with no time to really review them",
   },
   {
     icon: FileSearch,
-    text: "Drowning in applications with no time to review them all",
-  },
-  {
-    icon: Users,
-    text: "Screening hundreds of CVs when you could be interviewing",
+    text: "Manually screening hundreds of CVs just to build a shortlist",
   },
   {
     icon: AlertCircle,
-    text: "Great candidates slipping through because of volume",
+    text: "Great candidates slipping through – while risky profiles slip in",
   },
   {
-    icon: Timer,
-    text: "Clients waiting days for shortlists that should take hours",
+    icon: Users,
+    text: "Growing number of polished, AI-generated or fake CVs that are hard to spot",
   },
 ];
 
@@ -53,7 +45,7 @@ const ProblemSection = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {painPoints.map((point, index) => (
             <motion.div
               key={index}
@@ -81,8 +73,8 @@ const ProblemSection = () => {
           className="text-center mt-16"
         >
           <p className="text-lg md:text-xl text-foreground font-medium">
-            What if you had an extra team member who could handle all of this—
-            <span className="text-sage-dark">instantly?</span>
+            What if you had an extra team member whose only job was to read every CV, spot risks, <br className="hidden md:block"/>and hand you a{" "}
+            <span className="text-sage-dark">clean, ranked shortlist — every single time?</span>
           </p>
         </motion.div>
       </div>

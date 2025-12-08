@@ -17,11 +17,11 @@ const faqs = [
   },
   {
     question: "Can I use this alongside my current ATS?",
-    answer: "Yes. We're designing this to integrate with your existing workflow, whether that means replacing your current system or complementing it.",
+    answer: "Yes. In fact, we're designing it to sit on top of your existing tools. You can start by simply uploading roles and CV batches, and later connect it to your ATS if you wish — no need to rebuild your whole stack.",
   },
   {
     question: "How accurate is the AI screening?",
-    answer: "Our AI analyzes CVs against job requirements, evaluating qualifications, experience, skills, and fit. You can customize criteria and thresholds. We're targeting 90%+ accuracy, refined through pilot partner feedback.",
+    answer: "Our AI analyzes CVs against your job requirements, evaluating qualifications, experience, skills, and signals of risk. You can customize criteria and thresholds. During the pilot, we're focusing on two things: high-quality ranking of candidates by fit, and reliably highlighting profiles that look inconsistent or potentially fake.",
   },
   {
     question: "Is candidate data secure?",

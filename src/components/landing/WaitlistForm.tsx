@@ -48,7 +48,7 @@ const WaitlistForm = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg text-muted-foreground mb-8"
           >
-            Tell us about your recruitment process. Let's build something perfect together.
+            Share your challenges — especially around volume, CV quality and spotting risky profiles — we want to solve them together.
           </motion.p>
 
           <motion.p
@@ -58,7 +58,7 @@ const WaitlistForm = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-sm text-muted-foreground mb-10"
           >
-            We're reviewing applications on a rolling basis. The sooner you apply, the better your chances of joining as a design partner.
+            We're reviewing applications on a rolling basis.<br/>The sooner you apply, the better your chances of joining as a design partner.
           </motion.p>
 
           {/* Airtable Form Embed */}

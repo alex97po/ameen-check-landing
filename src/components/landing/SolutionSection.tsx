@@ -1,93 +1,67 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Pen, Globe, Inbox, Star, Mic, FileOutput } from "lucide-react";
+import { Star, Shield, FileOutput, Plug } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const features = [
   {
-    id: "job-descriptions",
-    icon: Pen,
-    title: "Writes Job Descriptions",
-    description: "Give it the role basics, and it crafts compelling, optimized job posts that attract quality candidates. Every time.",
-    details: [
-      "AI-powered job description generation",
-      "Optimized for search and engagement",
-      "Customizable templates and tone",
-    ],
-    color: "bg-sage/20",
-    iconColor: "text-sage-dark",
-    visualPlaceholder: "job-description.gif",
-  },
-  {
-    id: "multi-post",
-    icon: Globe,
-    title: "Posts Everywhere at Once",
-    description: "One click, and your job is live on LinkedIn, Indeed, and all major platforms. Your AI handles the busywork.",
-    details: [
-      "One-click multi-platform posting",
-      "LinkedIn, Indeed, and more",
-      "Automatic platform optimization",
-    ],
-    color: "bg-lavender/20",
-    iconColor: "text-lavender-dark",
-    visualPlaceholder: "multi-post.gif",
-  },
-  {
-    id: "applications",
-    icon: Inbox,
-    title: "Gathers All Applications",
-    description: "Every applicant from every platform flows into one place, automatically organized and ready for review.",
-    details: [
-      "Centralized application inbox",
-      "Automatic organization",
-      "Real-time syncing across platforms",
-    ],
-    color: "bg-peach/50",
-    iconColor: "text-terracotta",
-    visualPlaceholder: "applications.gif",
-  },
-  {
     id: "screening",
     icon: Star,
     title: "Screens & Ranks CVs",
-    description: "Reads every application, analyzes fit against requirements, and presents you with ranked candidates and detailed match scores.",
+    description: "Reads every application, analyzes fit against your requirements, and presents you with a ranked shortlist and clear match scores — instead of an endless pile of CVs.",
     details: [
-      "AI-powered CV analysis",
-      "Smart ranking algorithm",
-      "Detailed match scoring",
+      "AI-powered CV analysis against job requirements",
+      "Smart ranking algorithm with match scores",
+      "Clean, prioritized shortlist ready for review",
     ],
     color: "bg-sage/20",
     iconColor: "text-sage-dark",
     visualPlaceholder: "screening.gif",
   },
   {
-    id: "interviews",
-    icon: Mic,
-    title: "Pre-Screening Interviews",
-    description: "Candidates answer screening questions via WhatsApp audio messages. Your AI evaluates responses and highlights top performers.",
+    id: "risk-detection",
+    icon: Shield,
+    title: "Flags Risky & Inconsistent Profiles",
+    description: "Detects overlaps in dates and locations, suspicious job histories, AI-generated or copy-paste CVs, and potentially fake documents. Highlights risks before they ever reach your client.",
     details: [
-      "WhatsApp audio screening",
-      "AI response evaluation",
-      "Automated candidate highlights",
+      "Date and location inconsistency detection",
+      "AI-generated CV identification",
+      "Suspicious job history patterns",
+      "Early risk warning system",
     ],
-    color: "bg-lavender/20",
-    iconColor: "text-lavender-dark",
-    badge: "Optional",
-    visualPlaceholder: "interviews.gif",
+    color: "bg-rose/20",
+    iconColor: "text-rose",
+    visualPlaceholder: "risk-detection.gif",
   },
   {
     id: "reports",
     icon: FileOutput,
-    title: "Packages Candidate Reports",
-    description: "Creates professional, client-ready candidate summaries with one click. Branded, organized, impressive.",
+    title: "Packages Client-Ready Reports",
+    description: "Turns your ranked shortlist into clean, client-ready reports — with key facts, match scores, and any risk flags clearly explained.",
     details: [
-      "One-click report generation",
-      "Professional branded templates",
+      "One-click professional report generation",
+      "Match scores and key highlights",
+      "Risk flags clearly documented",
       "Client-ready formatting",
     ],
-    color: "bg-rose/20",
-    iconColor: "text-rose",
+    color: "bg-lavender/20",
+    iconColor: "text-lavender-dark",
     visualPlaceholder: "reports.gif",
+  },
+  {
+    id: "integration",
+    icon: Plug,
+    title: "Plugs into Your Existing Workflow",
+    description: "Use it right alongside your ATS, spreadsheets, or inbox. Drop in a role and a batch of CVs, and let the AI do the heavy lifting while you keep the tools and process you already know.",
+    details: [
+      "Works with your current ATS",
+      "No system migration required",
+      "Simple CV batch upload",
+      "White-label ready",
+    ],
+    color: "bg-peach/50",
+    iconColor: "text-terracotta",
+    visualPlaceholder: "integration.gif",
   },
 ];
 
@@ -106,7 +80,7 @@ const SolutionSection = () => {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold text-foreground mb-4"
           >
-            Your AI Talent Acquisition Specialist
+            Your AI Screening & Trust Engine
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -115,7 +89,7 @@ const SolutionSection = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-muted-foreground text-lg"
           >
-            Everything You Need — and a Few Things You Didn't Know You Could Have
+            Think of it as hiring an extra teammate whose only job is to read every CV, rank candidates by fit, and flag risky or potentially fake profiles — 24/7, without getting tired or missing details.
           </motion.p>
         </div>
 
@@ -151,11 +125,6 @@ const SolutionSection = () => {
                   >
                     {feature.title}
                   </span>
-                  {feature.badge && activeFeature === index && (
-                    <span className="absolute top-2 right-2 text-[10px] px-1.5 py-0.5 rounded-full bg-lavender/30 text-lavender-dark font-medium">
-                      {feature.badge}
-                    </span>
-                  )}
                   {activeFeature === index && (
                     <motion.div
                       layoutId="activeFeature"
@@ -180,15 +149,10 @@ const SolutionSection = () => {
                 >
                   {/* Feature Header */}
                   <div className="mb-8">
-                    <div className="flex items-start justify-between mb-4">
+                    <div className="mb-4">
                       <div className={cn("w-16 h-16 rounded-xl flex items-center justify-center", currentFeature.color)}>
                         <currentFeature.icon className={cn("w-8 h-8", currentFeature.iconColor)} />
                       </div>
-                      {currentFeature.badge && (
-                        <span className="text-xs px-3 py-1.5 rounded-full bg-lavender/30 text-lavender-dark font-medium">
-                          {currentFeature.badge}
-                        </span>
-                      )}
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
                       {currentFeature.title}

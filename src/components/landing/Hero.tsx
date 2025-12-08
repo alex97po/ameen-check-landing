@@ -44,9 +44,9 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 text-balance"
           >
-            Meet Your New AI{" "}
+            Meet Your AI{" "}
             <span className="relative">
-              <span className="relative z-10">Talent Acquisition</span>
+              <span className="relative z-10">Screening & Trust</span>
               <motion.span
                 className="absolute bottom-2 left-0 right-0 h-3 bg-sage/40 -z-0"
                 initial={{ scaleX: 0 }}
@@ -62,9 +62,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 text-balance"
+            className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto mb-8 text-balance"
           >
-            An AI employee that never sleeps, never misses a detail, and handles everything from writing job posts to screening candidates—so your team can focus on what humans do best: connecting with talent.
+            An AI teammate for recruitment agencies that reviews every CV, ranks candidates by fit, and flags risky or potentially fake profiles — so your team can focus on interviews and relationships, not on endless manual screening.
           </motion.p>
 
           {/* Supporting text */}
@@ -74,7 +74,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-sm text-muted-foreground mb-10"
           >
-            Join forward-thinking recruitment agencies and HR teams shaping the future of hiring.
+            Join forward-thinking recruitment agencies and in-house TA teams who are tired of drowning in CVs and missing great candidates. Become a pilot partner and help us train an AI teammate that works exactly the way you hire.
           </motion.p>
 
           {/* CTAs */}
@@ -86,7 +86,7 @@ const Hero = () => {
           >
             <Button variant="hero" size="xl" asChild>
               <a href="#waitlist" className="group">
-                Join the Pilot Program
+                Apply for the Pilot Program
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
