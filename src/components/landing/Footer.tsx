@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Linkedin, Twitter, Mail } from "lucide-react";
+import { ArrowRight, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
@@ -23,7 +23,7 @@ const Footer = () => {
           <Button 
             variant="outline" 
             size="xl" 
-            className="border-background/30 text-background hover:bg-background hover:text-foreground group"
+            className="border-background bg-background text-foreground hover:bg-background/90 group"
             asChild
           >
             <a href="#waitlist">
@@ -39,12 +39,12 @@ const Footer = () => {
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-sage flex items-center justify-center">
-                <span className="text-foreground font-bold text-sm">AI</span>
+                <span className="text-foreground font-bold text-sm">AC</span>
               </div>
-              <span className="font-semibold">RecruitAI</span>
+              <span className="font-semibold">AmeenCheck</span>
             </div>
             <span className="text-background/40 text-sm">
-              © 2024 All rights reserved
+              © 2025 All rights reserved
             </span>
           </div>
 
@@ -59,7 +59,7 @@ const Footer = () => {
             <a href="#" className="text-background/60 hover:text-background transition-colors">
               Terms
             </a>
-            <a href="mailto:hello@recruitai.com" className="text-background/60 hover:text-background transition-colors">
+            <a href="mailto:hello@ameencheck.com" className="text-background/60 hover:text-background transition-colors">
               Contact
             </a>
           </div>
@@ -74,14 +74,7 @@ const Footer = () => {
               <Linkedin className="w-5 h-5" />
             </a>
             <a 
-              href="#" 
-              className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
-              aria-label="Twitter"
-            >
-              <Twitter className="w-5 h-5" />
-            </a>
-            <a 
-              href="mailto:hello@recruitai.com" 
+              href="mailto:hello@ameencheck.com" 
               className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
               aria-label="Email"
             >

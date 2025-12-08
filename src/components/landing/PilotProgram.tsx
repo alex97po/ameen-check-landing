@@ -20,9 +20,9 @@ const requirements = [
 
 const timeline = [
   { phase: "Now", text: "Join the waitlist" },
-  { phase: "Q1 2025", text: "Pilot partner selection & onboarding" },
-  { phase: "Q2 2025", text: "Collaborative development & real-world testing" },
-  { phase: "Q3 2025", text: "Launch & transition to full platform" },
+  { phase: "Q1 2026", text: "Pilot partner selection & onboarding" },
+  { phase: "Q2 2026", text: "Collaborative development & real-world testing" },
+  { phase: "Q3 2026", text: "Launch & transition to full platform" },
 ];
 
 const PilotProgram = () => {
