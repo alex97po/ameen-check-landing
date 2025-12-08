@@ -95,42 +95,8 @@ const Hero = () => {
             </Button>
           </motion.div>
 
-          {/* Trust indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-16 pt-8 border-t border-border/50"
-          >
-            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-4">
-              Built for modern recruitment teams
-            </p>
-            <div className="flex items-center justify-center gap-8 text-muted-foreground/60">
-              <div className="text-sm font-medium">Recruitment Agencies</div>
-              <div className="w-1 h-1 rounded-full bg-border" />
-              <div className="text-sm font-medium">In-House HR</div>
-              <div className="w-1 h-1 rounded-full bg-border" />
-              <div className="text-sm font-medium">Talent Acquisition</div>
-            </div>
-          </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2"
-        >
-          <div className="w-1 h-2 rounded-full bg-muted-foreground/50" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 };
