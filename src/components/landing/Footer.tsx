@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ameenLogo from "@/assets/ameen-logo.jpg";
 
 const Footer = () => {
   return (
@@ -39,8 +38,8 @@ const Footer = () => {
           {/* Logo & Copyright */}
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
-              <img src={ameenLogo} alt="AmeenCheck" className="w-8 h-8" />
-              <span className="font-semibold">AmeenCheck</span>
+              <img src="/ameen-logo.svg" alt="AmeenPay" className="w-8 h-8" />
+              <span className="font-semibold">AmeenPay</span>
             </div>
             <span className="text-background/40 text-sm">
               © 2025 All rights reserved
