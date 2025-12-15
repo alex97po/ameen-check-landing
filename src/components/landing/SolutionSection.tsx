@@ -94,15 +94,16 @@ const SolutionSection = () => {
         </div>
 
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-[300px_1fr] gap-8 lg:gap-12">
-            {/* Feature Tabs - Left Side */}
-            <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0">
+          {/* Simple Carousel */}
+          <div className="relative">
+            {/* Feature Navigation Cards - Above the main content */}
+            <div className="flex justify-center gap-2 overflow-x-auto pb-4 mb-6 scrollbar-hide">
               {features.map((feature, index) => (
                 <button
                   key={feature.id}
                   onClick={() => setActiveFeature(index)}
                   className={cn(
-                    "flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all duration-300 whitespace-nowrap lg:whitespace-normal relative group",
+                    "flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all duration-300 whitespace-nowrap relative group flex-shrink-0",
                     activeFeature === index
                       ? "bg-card border-2 border-sage shadow-md"
                       : "bg-card/50 border-2 border-transparent hover:border-sage/30 hover:bg-card"
@@ -136,7 +137,7 @@ const SolutionSection = () => {
               ))}
             </div>
 
-            {/* Feature Content - Right Side */}
+            {/* Feature Content - Carousel */}
             <div className="relative bg-card rounded-2xl border border-border/50 overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -149,19 +150,20 @@ const SolutionSection = () => {
                 >
                   {/* Feature Header */}
                   <div className="mb-8">
-                    <div className="mb-4">
-                      <div className={cn("w-16 h-16 rounded-xl flex items-center justify-center", currentFeature.color)}>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className={cn("w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0", currentFeature.color)}>
                         <currentFeature.icon className={cn("w-8 h-8", currentFeature.iconColor)} />
                       </div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                        {currentFeature.title}
+                      </h3>
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                      {currentFeature.title}
-                    </h3>
                     <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
                       {currentFeature.description}
                     </p>
                     
-                    {/* Feature Details */}
+                    {/* Feature Details - COMMENTED OUT */}
+                    {/*
                     <ul className="space-y-3">
                       {currentFeature.details.map((detail, idx) => (
                         <motion.li
@@ -176,6 +178,7 @@ const SolutionSection = () => {
                         </motion.li>
                       ))}
                     </ul>
+                    */}
                   </div>
 
                   {/* Visual Placeholder */}
@@ -185,53 +188,38 @@ const SolutionSection = () => {
                     transition={{ delay: 0.2, duration: 0.4 }}
                     className="relative rounded-xl overflow-hidden bg-gradient-to-br from-sage/10 via-lavender/10 to-peach/10 aspect-video flex items-center justify-center border border-border/30"
                   >
-                    {/* Feature images */}
+                    {/* Feature images - SVG */}
                     {currentFeature.id === "screening" && (
                       <img 
-                        src="/screening.jpg" 
+                        src="/screening.svg" 
                         alt="CV Screening and Ranking Interface"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     )}
                     {currentFeature.id === "risk-detection" && (
                       <img 
-                        src="/risk-detection.jpg" 
+                        src="/risk-detection.svg" 
                         alt="Risk Detection and Profile Analysis"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     )}
                     {currentFeature.id === "reports" && (
                       <img 
-                        src="/reports.jpg" 
+                        src="/reports.svg" 
                         alt="Client-Ready Reports Generation"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     )}
                     {currentFeature.id === "integration" && (
                       <img 
-                        src="/integration.jpg" 
+                        src="/integration.svg" 
                         alt="Workflow Integration"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     )}
                   </motion.div>
                 </motion.div>
               </AnimatePresence>
-
-              {/* Progress Indicator */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                {features.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveFeature(index)}
-                    className={cn(
-                      "h-1.5 rounded-full transition-all duration-300",
-                      activeFeature === index ? "w-8 bg-sage" : "w-1.5 bg-border hover:bg-sage/50"
-                    )}
-                    aria-label={`Go to feature ${index + 1}`}
-                  />
-                ))}
-              </div>
             </div>
           </div>
         </div>

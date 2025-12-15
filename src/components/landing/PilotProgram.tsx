@@ -27,7 +27,9 @@ const timeline = [
 
 const PilotProgram = () => {
   return (
-    <section id="pilot" className="py-24 md:py-32 bg-card">
+    <section id="pilot" className="hidden">
+      {/* COMMENTED OUT: "Build It With Us" section - Section is hidden */}
+      {/*
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <motion.h2
@@ -51,7 +53,6 @@ const PilotProgram = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* What Partners Get */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -80,7 +81,6 @@ const PilotProgram = () => {
             </div>
           </motion.div>
 
-          {/* What We're Looking For */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -130,6 +130,7 @@ const PilotProgram = () => {
           </Button>
         </motion.div>
       </div>
+      */}
     </section>
   );
 };

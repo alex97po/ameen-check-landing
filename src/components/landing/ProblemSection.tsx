@@ -22,7 +22,9 @@ const painPoints = [
 
 const ProblemSection = () => {
   return (
-    <section id="problem" className="py-24 md:py-32 bg-card">
+    <section id="problem" className="hidden">
+      {/* COMMENTED OUT: "Your Team Is Stretched Too Thin" section - Section is hidden */}
+      {/*
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <motion.h2
@@ -78,6 +80,7 @@ const ProblemSection = () => {
           </p>
         </motion.div>
       </div>
+      */}
     </section>
   );
 };
