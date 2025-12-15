@@ -185,31 +185,34 @@ const SolutionSection = () => {
                     transition={{ delay: 0.2, duration: 0.4 }}
                     className="relative rounded-xl overflow-hidden bg-gradient-to-br from-sage/10 via-lavender/10 to-peach/10 aspect-video flex items-center justify-center border border-border/30"
                   >
-                    {/* Show actual image for screening feature, placeholder for others */}
-                    {currentFeature.id === "screening" ? (
+                    {/* Feature images */}
+                    {currentFeature.id === "screening" && (
                       <img 
                         src="/screening.jpg" 
                         alt="CV Screening and Ranking Interface"
                         className="w-full h-full object-cover"
                       />
-                    ) : (
-                      <>
-                        {/* Placeholder for GIF/Illustration */}
-                        <div className="text-center p-8">
-                          <div className={cn("w-20 h-20 mx-auto mb-4 rounded-2xl flex items-center justify-center", currentFeature.color)}>
-                            <currentFeature.icon className={cn("w-10 h-10", currentFeature.iconColor)} />
-                          </div>
-                          <p className="text-sm text-muted-foreground font-medium">
-                            Feature visualization coming soon
-                          </p>
-                          <p className="text-xs text-muted-foreground/60 mt-1">
-                            {currentFeature.visualPlaceholder}
-                          </p>
-                        </div>
-                        
-                        {/* Decorative gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
-                      </>
+                    )}
+                    {currentFeature.id === "risk-detection" && (
+                      <img 
+                        src="/risk-detection.jpg" 
+                        alt="Risk Detection and Profile Analysis"
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                    {currentFeature.id === "reports" && (
+                      <img 
+                        src="/reports.jpg" 
+                        alt="Client-Ready Reports Generation"
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                    {currentFeature.id === "integration" && (
+                      <img 
+                        src="/integration.jpg" 
+                        alt="Workflow Integration"
+                        className="w-full h-full object-cover"
+                      />
                     )}
                   </motion.div>
                 </motion.div>
