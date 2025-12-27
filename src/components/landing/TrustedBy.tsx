@@ -1,12 +1,17 @@
+import atelier from "@/assets/partners/atelier.svg";
 import daoEducation from "@/assets/partners/dao-education-technology.svg";
 import daoFinancial from "@/assets/partners/dao-financial-solutions.svg";
+import lingvoExpert from "@/assets/partners/lingvo-expert.svg";
 import postPulse from "@/assets/partners/post-pulse.svg";
+import unifyHub from "@/assets/partners/unify-hub.svg";
 
 const companies = [
     { name: "DAO Education Technology", logo: daoEducation },
-    { name: "DAO Financial Solutions", logo: daoFinancial },
     { name: "Post Pulse", logo: postPulse },
-    // Duplicate for smooth infinite scroll if needed, or we handle it in render
+    { name: "Atelier", logo: atelier },
+    { name: "Lingvo Expert", logo: lingvoExpert },
+    { name: "DAO Financial Solutions", logo: daoFinancial },
+    { name: "UnifyHub", logo: unifyHub }
 ];
 
 const TrustedBy = () => {
