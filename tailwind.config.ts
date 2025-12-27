@@ -51,17 +51,9 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         sage: {
-          DEFAULT: "hsl(var(--sage))",
-          dark: "hsl(var(--sage-dark))",
+          DEFAULT: "hsl(var(--primary))", // Mapping to primary for backward compat if needed temporarily
         },
-        lavender: {
-          DEFAULT: "hsl(var(--lavender))",
-          dark: "hsl(var(--lavender-dark))",
-        },
-        beige: "hsl(var(--beige))",
-        peach: "hsl(var(--peach))",
-        rose: "hsl(var(--rose))",
-        terracotta: "hsl(var(--terracotta))",
+        // Removed soft pastel colors: lavender, beige, peach, rose, terracotta
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -103,6 +95,11 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.7" },
         },
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -111,6 +108,7 @@ export default {
         "fade-in": "fade-in 0.5s ease-out forwards",
         float: "float 6s ease-in-out infinite",
         pulse: "pulse 3s ease-in-out infinite",
+        scroll: "scroll 40s linear infinite",
       },
     },
   },

@@ -14,21 +14,19 @@ const Footer = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16 pb-16 border-b border-background/10"
         >
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Hire smarter. Work lighter. Let AI handle the rest.
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            Ready to Revolutionize Recruitment?
           </h2>
-          <p className="text-background/60 mb-8">
-            Your next team member doesn't need a desk.
+          <p className="text-background/60 mb-8 max-w-2xl mx-auto text-lg">
+            Join the future of hiring today. Automated, accurate, and effortless.
           </p>
-          <Button 
-            variant="outline" 
-            size="xl" 
-            className="border-background bg-background text-foreground hover:bg-background/90 group"
+          <Button
+            className="h-14 px-10 rounded-xl text-lg bg-white text-black hover:bg-white/90 group"
             asChild
           >
-            <a href="#waitlist">
-              Join the Pilot Program
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            <a href="#pricing">
+              Start Your Free Trial
+              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
             </a>
           </Button>
         </motion.div>
@@ -57,22 +55,22 @@ const Footer = () => {
             <a href="#" className="text-background/60 hover:text-background transition-colors">
               Terms
             </a>
-            <a href="mailto:sas.pogorelov@gmail.com" className="text-background/60 hover:text-background transition-colors">
+            <a href="mailto:ksenia@ameen-check.com" className="text-background/60 hover:text-background transition-colors">
               Contact
             </a>
           </div>
 
           {/* Social */}
           <div className="flex items-center gap-4">
-            <a 
-              href="https://www.linkedin.com/in/alex-pohorelov/" 
+            <a
+              href="https://www.linkedin.com/in/alex-pohorelov/"
               className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
             </a>
-            <a 
-              href="mailto:sas.pogorelov@gmail.com" 
+            <a
+              href="mailto:ksenia@ameen-check.com"
               className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
               aria-label="Email"
             >
