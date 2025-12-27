@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Pause } from "lucide-react";
 
@@ -27,6 +27,13 @@ const demos = [
 const Demo = () => {
     const [activeTab, setActiveTab] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.playbackRate = 2.0;
+        }
+    }, [activeTab]);
 
     return (
         <section id="demo" className="py-24 bg-secondary/20 relative overflow-hidden">
@@ -70,6 +77,7 @@ const Demo = () => {
                             className="relative aspect-video bg-black/80 rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
                         >
                             <video
+                                ref={videoRef}
                                 src={demos[activeTab].video}
                                 autoPlay
                                 muted
@@ -77,6 +85,11 @@ const Demo = () => {
                                 playsInline
                                 controls
                                 className="w-full h-full object-cover"
+                                onLoadedMetadata={() => {
+                                    if (videoRef.current) {
+                                        videoRef.current.playbackRate = 2.0;
+                                    }
+                                }}
                             />
                         </motion.div>
                     </AnimatePresence>
