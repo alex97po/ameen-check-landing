@@ -2,34 +2,40 @@ import { motion } from "framer-motion";
 import { ArrowRight, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const Footer = () => {
+interface FooterProps {
+  showCTA?: boolean;
+}
+
+const Footer = ({ showCTA = true }: FooterProps) => {
   return (
     <footer className="bg-foreground text-background py-16">
       <div className="container mx-auto px-6">
         {/* Final CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16 pb-16 border-b border-background/10"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Ready to Revolutionize Recruitment?
-          </h2>
-          <p className="text-background/60 mb-8 max-w-2xl mx-auto text-lg">
-            Join the future of hiring today. Automated, accurate, and effortless.
-          </p>
-          <Button
-            className="h-14 px-10 rounded-xl text-lg bg-white text-black hover:bg-white/90 group"
-            asChild
+        {showCTA && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16 pb-16 border-b border-background/10"
           >
-            <a href="#pricing">
-              Start Your Free Trial
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-            </a>
-          </Button>
-        </motion.div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Ready to Revolutionize Recruitment?
+            </h2>
+            <p className="text-background/60 mb-8 max-w-2xl mx-auto text-lg">
+              Join the future of hiring today. Automated, accurate, and effortless.
+            </p>
+            <Button
+              className="h-14 px-10 rounded-xl text-lg bg-white text-black hover:bg-white/90 group"
+              asChild
+            >
+              <a href="#pricing">
+                Start Your Free Trial
+                <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+          </motion.div>
+        )}
 
         {/* Footer Links */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
