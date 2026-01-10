@@ -17,11 +17,18 @@ const WebinarNavbar = ({ onRegisterClick }: WebinarNavbarProps) => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const scrollToSection = (id: string) => {
+        const element = document.querySelector(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     const navLinks = [
-        { href: "#about", label: "About" },
-        { href: "#build", label: "What You'll Build" },
-        { href: "#benefits", label: "Benefits" },
-        { href: "#format", label: "Format" },
+        { id: "#about", label: "About" },
+        { id: "#build", label: "What You'll Build" },
+        { id: "#benefits", label: "Benefits" },
+        { id: "#format", label: "Format" },
     ];
 
     return (
@@ -34,7 +41,7 @@ const WebinarNavbar = ({ onRegisterClick }: WebinarNavbarProps) => {
             <div className="container mx-auto px-6">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <a href="#" className="flex items-center gap-2 group">
+                    <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex items-center gap-2 group cursor-pointer">
                         <img
                             src="/ameen-logo.svg"
                             alt="AmeenCheck"
@@ -46,13 +53,13 @@ const WebinarNavbar = ({ onRegisterClick }: WebinarNavbarProps) => {
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
-                            <a
-                                key={link.href}
-                                href={link.href}
+                            <button
+                                key={link.id}
+                                onClick={() => scrollToSection(link.id)}
                                 className="text-sm font-medium text-muted-foreground hover:text-foreground hover:glow-sm transition-all duration-200"
                             >
                                 {link.label}
-                            </a>
+                            </button>
                         ))}
                         <Button
                             className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25"
@@ -85,14 +92,16 @@ const WebinarNavbar = ({ onRegisterClick }: WebinarNavbarProps) => {
                     >
                         <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
                             {navLinks.map((link) => (
-                                <a
-                                    key={link.href}
-                                    href={link.href}
-                                    className="text-lg font-medium text-muted-foreground hover:text-primary transition-colors py-2"
-                                    onClick={() => setIsOpen(false)}
+                                <button
+                                    key={link.id}
+                                    onClick={() => {
+                                        scrollToSection(link.id);
+                                        setIsOpen(false);
+                                    }}
+                                    className="text-lg font-medium text-muted-foreground hover:text-primary transition-colors py-2 text-left"
                                 >
                                     {link.label}
-                                </a>
+                                </button>
                             ))}
                             <Button className="w-full mt-4 bg-primary text-white" onClick={() => {
                                 setIsOpen(false);

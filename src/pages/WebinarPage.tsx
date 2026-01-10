@@ -1,9 +1,84 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { useRef, MouseEvent } from "react";
 import WebinarNavbar from "@/components/landing/WebinarNavbar";
 import Footer from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, Check, Users, Quote, ArrowRight, Zap, Target, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+
+const HeroParticles = () => {
+    return (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(20)].map((_, i) => (
+                <motion.div
+                    key={i}
+                    className="absolute bg-white rounded-full opacity-20"
+                    initial={{
+                        x: Math.random() * 100 + "%",
+                        y: Math.random() * 100 + "%",
+                        scale: Math.random() * 0.5 + 0.5,
+                    }}
+                    animate={{
+                        y: [null, Math.random() * -100 + "%"],
+                        opacity: [0.2, 0.5, 0.2],
+                    }}
+                    transition={{
+                        duration: Math.random() * 10 + 10,
+                        repeat: Infinity,
+                        ease: "linear",
+                    }}
+                    style={{
+                        width: Math.random() * 4 + 1 + "px",
+                        height: Math.random() * 4 + 1 + "px",
+                    }}
+                />
+            ))}
+        </div>
+    );
+};
+
+const TiltCard = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const mouseX = useSpring(x, { stiffness: 500, damping: 100 });
+    const mouseY = useSpring(y, { stiffness: 500, damping: 100 });
+
+    const rotateX = useTransform(mouseY, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
+    const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
+
+    const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        const mouseXFromCenter = e.clientX - rect.left - width / 2;
+        const mouseYFromCenter = e.clientY - rect.top - height / 2;
+        x.set(mouseXFromCenter / width);
+        y.set(mouseYFromCenter / height);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
+
+    return (
+        <motion.div
+            style={{
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+            }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="h-full"
+        >
+            <div style={{ transform: "translateZ(75px)", transformStyle: "preserve-3d" }} className={className}>
+                {children}
+            </div>
+        </motion.div>
+    );
+};
 
 const WebinarPage = () => {
     const scrollToRegister = () => {
@@ -21,6 +96,7 @@ const WebinarPage = () => {
 
                 {/* Animated Gradient Globs */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <HeroParticles />
                     <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/30 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
                     <div className="absolute top-0 right-1/4 w-96 h-96 bg-indigo-600/30 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
                     <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-600/30 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-4000"></div>
@@ -88,11 +164,14 @@ const WebinarPage = () => {
                     >
                         <Button
                             size="lg"
-                            className="bg-white text-purple-900 hover:bg-gray-100 text-lg px-10 py-7 rounded-full shadow-[0_0_50px_-12px_rgba(255,255,255,0.5)] hover:shadow-[0_0_60px_-12px_rgba(255,255,255,0.7)] transition-all duration-300 group"
+                            className="bg-white text-purple-900 hover:bg-gray-100 text-lg px-10 py-7 rounded-full shadow-[0_0_50px_-12px_rgba(255,255,255,0.5)] hover:shadow-[0_0_60px_-12px_rgba(255,255,255,0.7)] transition-all duration-300 group relative overflow-hidden"
                             onClick={scrollToRegister}
                         >
-                            Reserve Your Spot
-                            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:animate-shimmer" />
+                            <span className="relative flex items-center">
+                                Reserve Your Spot
+                                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </span>
                         </Button>
                         <p className="mt-4 text-white/50 text-sm">Limited live spots available</p>
                     </motion.div>
@@ -151,17 +230,19 @@ const WebinarPage = () => {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: i * 0.1 }}
                             >
-                                <Card className="bg-slate-900/50 border-white/10 h-full backdrop-blur-sm hover:bg-slate-800/50 transition-colors group">
-                                    <CardContent className="p-8">
-                                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                                <TiltCard className="h-full">
+                                    <div className="bg-slate-900/50 border border-white/10 rounded-xl p-8 h-full backdrop-blur-sm hover:bg-slate-800/50 transition-colors group relative overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-inner`}>
                                             {card.icon}
                                         </div>
                                         <h3 className="text-xl font-bold text-white mb-4">{card.title}</h3>
                                         <p className="text-slate-400 leading-relaxed">
                                             {card.desc}
                                         </p>
-                                    </CardContent>
-                                </Card>
+                                    </div>
+                                </TiltCard>
                             </motion.div>
                         ))}
                     </div>
@@ -205,43 +286,99 @@ const WebinarPage = () => {
                         </div>
 
                         <div className="relative">
-                            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl opacity-20 blur-xl"></div>
+                            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl opacity-20 blur-xl animate-pulse"></div>
                             <div className="relative bg-card border rounded-xl overflow-hidden shadow-2xl">
                                 {/* Abstract UI representation of the tool being built */}
                                 <div className="bg-muted p-4 border-b flex gap-2 items-center">
                                     <div className="w-3 h-3 rounded-full bg-red-400"></div>
                                     <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
                                     <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                                    <div className="ml-4 h-6 w-64 bg-background/50 rounded flex items-center px-4 text-xs text-muted-foreground">lovable.dev/screening-copilot</div>
+                                    <div className="ml-4 h-6 w-64 bg-background/50 rounded flex items-center px-4 text-xs text-muted-foreground font-mono">lovable.dev/screening-copilot</div>
                                 </div>
                                 <div className="p-8 space-y-6">
-                                    <div className="space-y-2">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.2 }}
+                                        className="space-y-2"
+                                    >
                                         <div className="h-4 w-1/3 bg-primary/20 rounded"></div>
-                                        <div className="h-20 w-full bg-muted rounded border border-dashed border-muted-foreground/30 flex items-center justify-center text-muted-foreground text-sm">
-                                            Upload Resume (PDF)
+                                        <div className="h-20 w-full bg-muted rounded border border-dashed border-muted-foreground/30 flex items-center justify-center text-muted-foreground text-sm group cursor-pointer hover:bg-muted/80 transition-colors">
+                                            <span className="group-hover:scale-105 transition-transform">Upload Resume (PDF)</span>
                                         </div>
-                                    </div>
+                                    </motion.div>
+
                                     <div className="space-y-4">
                                         <div className="flex gap-4">
-                                            <div className="flex-1 space-y-2">
+                                            <motion.div
+                                                className="flex-1 space-y-2"
+                                                initial={{ opacity: 0, x: -10 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                viewport={{ once: true }}
+                                                transition={{ delay: 0.4 }}
+                                            >
                                                 <div className="h-3 w-2/3 bg-muted rounded"></div>
-                                                <div className="h-3 w-full bg-muted rounded"></div>
-                                            </div>
-                                            <div className="flex-1 space-y-2">
+                                                <motion.div
+                                                    className="h-3 bg-muted rounded"
+                                                    initial={{ width: "0%" }}
+                                                    whileInView={{ width: "100%" }}
+                                                    viewport={{ once: true }}
+                                                    transition={{ delay: 0.5, duration: 1 }}
+                                                />
+                                            </motion.div>
+                                            <motion.div
+                                                className="flex-1 space-y-2"
+                                                initial={{ opacity: 0, x: 10 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                viewport={{ once: true }}
+                                                transition={{ delay: 0.4 }}
+                                            >
                                                 <div className="h-3 w-2/3 bg-green-500/20 rounded"></div>
-                                                <div className="h-3 w-full bg-green-500/10 rounded"></div>
-                                            </div>
+                                                <motion.div
+                                                    className="h-3 bg-green-500/10 rounded"
+                                                    initial={{ width: "0%" }}
+                                                    whileInView={{ width: "100%" }}
+                                                    viewport={{ once: true }}
+                                                    transition={{ delay: 0.7, duration: 1 }}
+                                                />
+                                            </motion.div>
                                         </div>
-                                        <div className="h-24 w-full bg-blue-500/5 rounded border border-blue-100 dark:border-blue-900/50 p-4">
-                                            <div className="flex gap-2 mb-2">
+
+                                        <motion.div
+                                            initial={{ opacity: 0, scale: 0.95 }}
+                                            whileInView={{ opacity: 1, scale: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: 1.5, type: "spring" }}
+                                            className="h-24 w-full bg-blue-500/5 rounded border border-blue-100 dark:border-blue-900/50 p-4 relative overflow-hidden"
+                                        >
+                                            <motion.div
+                                                className="absolute inset-0 bg-blue-500/5"
+                                                animate={{ opacity: [0.3, 0.6, 0.3] }}
+                                                transition={{ duration: 2, repeat: Infinity }}
+                                            />
+                                            <div className="flex gap-2 mb-2 relative z-10">
                                                 <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-xs">🤖</div>
                                                 <div className="h-4 w-32 bg-blue-200/50 rounded"></div>
                                             </div>
-                                            <div className="space-y-1 ml-8">
-                                                <div className="h-2 w-full bg-blue-100/50 rounded"></div>
-                                                <div className="h-2 w-5/6 bg-blue-100/50 rounded"></div>
+                                            <div className="space-y-1 ml-8 relative z-10">
+                                                {/* Typing Effect Simulation */}
+                                                <motion.div
+                                                    className="h-2 bg-blue-100/50 rounded"
+                                                    initial={{ width: "0%" }}
+                                                    whileInView={{ width: "90%" }}
+                                                    viewport={{ once: true }}
+                                                    transition={{ delay: 1.8, duration: 1.5 }}
+                                                />
+                                                <motion.div
+                                                    className="h-2 bg-blue-100/50 rounded"
+                                                    initial={{ width: "0%" }}
+                                                    whileInView={{ width: "75%" }}
+                                                    viewport={{ once: true }}
+                                                    transition={{ delay: 2.5, duration: 1 }}
+                                                />
                                             </div>
-                                        </div>
+                                        </motion.div>
                                     </div>
                                 </div>
                             </div>
@@ -349,10 +486,17 @@ const WebinarPage = () => {
                                     "Support hiring managers with clearer decision-making",
                                     "Free up time for real human work"
                                 ].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-3">
+                                    <motion.li
+                                        key={i}
+                                        className="flex items-center gap-3"
+                                        initial={{ opacity: 0, x: -10 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: i * 0.1 }}
+                                    >
                                         <Zap className="w-4 h-4 text-amber-500 fill-amber-500" />
                                         <span>{item}</span>
-                                    </li>
+                                    </motion.li>
                                 ))}
                             </ul>
                             <div className="mt-8 pt-6 border-t font-medium text-lg text-primary">

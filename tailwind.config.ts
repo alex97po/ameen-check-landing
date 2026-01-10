@@ -114,6 +114,11 @@ export default {
             transform: "translate(0px, 0px) scale(1)",
           },
         },
+        shimmer: {
+          "100%": {
+            transform: "translateX(100%)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -124,6 +129,7 @@ export default {
         pulse: "pulse 3s ease-in-out infinite",
         scroll: "scroll 40s linear infinite",
         blob: "blob 7s infinite",
+        shimmer: "shimmer 2s infinite",
       },
     },
   },
