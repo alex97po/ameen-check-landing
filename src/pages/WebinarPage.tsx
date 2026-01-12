@@ -149,7 +149,7 @@ const WebinarPage = () => {
                     >
                         <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 backdrop-blur border border-white/5">
                             <Calendar className="w-5 h-5 text-purple-300" />
-                            <span className="font-medium text-white">Jan 15</span>
+                            <span className="font-medium text-white">Jan 22</span>
                         </div>
                         <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 backdrop-blur border border-white/5">
                             <Clock className="w-5 h-5 text-purple-300" />
